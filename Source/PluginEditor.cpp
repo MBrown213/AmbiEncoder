@@ -27,7 +27,7 @@
 //[/MiscUserDefs]
 
 //==============================================================================
-AmbiEncoderAudioProcessorEditor::AmbiEncoderAudioProcessorEditor (AmbiEncoderAudioProcessor& p)
+NewProjectAudioProcessorEditor::NewProjectAudioProcessorEditor (NewProjectAudioProcessor& p)
     : AudioProcessorEditor(p), processor(p)
 {
     //[Constructor_pre] You can add your own custom stuff here..
@@ -45,7 +45,7 @@ AmbiEncoderAudioProcessorEditor::AmbiEncoderAudioProcessorEditor (AmbiEncoderAud
     //[/Constructor]
 }
 
-AmbiEncoderAudioProcessorEditor::~AmbiEncoderAudioProcessorEditor()
+NewProjectAudioProcessorEditor::~NewProjectAudioProcessorEditor()
 {
     //[Destructor_pre]. You can add your own custom destruction code here..
     //[/Destructor_pre]
@@ -57,7 +57,7 @@ AmbiEncoderAudioProcessorEditor::~AmbiEncoderAudioProcessorEditor()
 }
 
 //==============================================================================
-void AmbiEncoderAudioProcessorEditor::paint (Graphics& g)
+void NewProjectAudioProcessorEditor::paint (Graphics& g)
 {
     //[UserPrePaint] Add your own custom painting code here..
     //[/UserPrePaint]
@@ -68,7 +68,7 @@ void AmbiEncoderAudioProcessorEditor::paint (Graphics& g)
     //[/UserPaint]
 }
 
-void AmbiEncoderAudioProcessorEditor::resized()
+void NewProjectAudioProcessorEditor::resized()
 {
     //[UserPreResize] Add your own custom resize code here..
     //[/UserPreResize]
@@ -80,7 +80,7 @@ void AmbiEncoderAudioProcessorEditor::resized()
 
 
 //[MiscUserCode] You can add your own definitions of your custom methods or any other code here...
-void AmbiEncoderAudioProcessorEditor::timerCallback()
+void NewProjectAudioProcessorEditor::timerCallback()
 {
     //exchange any data you want between UI elements and the Plugin "ourProcessor"
 }
@@ -97,7 +97,7 @@ void AmbiEncoderAudioProcessorEditor::timerCallback()
 
 BEGIN_JUCER_METADATA
 
-<JUCER_COMPONENT documentType="Component" className="AmbiEncoderAudioProcessorEditor"
+<JUCER_COMPONENT documentType="Component" className="NewProjectAudioProcessorEditor"
                  componentName="" parentClasses="public AudioProcessorEditor, public Timer"
                  constructorParams="StereoPannerAudioProcessor&amp; p" variableInitialisers="AudioProcessorEditor(p), processor(p)"
                  snapPixels="8" snapActive="1" snapShown="1" overlayOpacity="0.330"

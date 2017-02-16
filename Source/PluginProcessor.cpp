@@ -13,31 +13,31 @@
 
 
 //==============================================================================
-AmbiEncoderAudioProcessor::AmbiEncoderAudioProcessor()
+NewProjectAudioProcessor::NewProjectAudioProcessor()
 #ifndef JucePlugin_PreferredChannelConfigurations
      : AudioProcessor (BusesProperties()
                      #if ! JucePlugin_IsMidiEffect
                       #if ! JucePlugin_IsSynth
-                       .withInput  ("Input",  AudioChannelSet::stereo(), true)
+                       .withInput  ("Input",  AudioChannelSet::mono(), true)
                       #endif
-                       .withOutput ("Output", AudioChannelSet::stereo(), true)
+                       .withOutput ("Output", AudioChannelSet::mono(), true)
                      #endif
                        )
 #endif
 {
 }
 
-AmbiEncoderAudioProcessor::~AmbiEncoderAudioProcessor()
+NewProjectAudioProcessor::~NewProjectAudioProcessor()
 {
 }
 
 //==============================================================================
-const String AmbiEncoderAudioProcessor::getName() const
+const String NewProjectAudioProcessor::getName() const
 {
     return JucePlugin_Name;
 }
 
-bool AmbiEncoderAudioProcessor::acceptsMidi() const
+bool NewProjectAudioProcessor::acceptsMidi() const
 {
    #if JucePlugin_WantsMidiInput
     return true;
@@ -46,7 +46,7 @@ bool AmbiEncoderAudioProcessor::acceptsMidi() const
    #endif
 }
 
-bool AmbiEncoderAudioProcessor::producesMidi() const
+bool NewProjectAudioProcessor::producesMidi() const
 {
    #if JucePlugin_ProducesMidiOutput
     return true;
@@ -55,50 +55,50 @@ bool AmbiEncoderAudioProcessor::producesMidi() const
    #endif
 }
 
-double AmbiEncoderAudioProcessor::getTailLengthSeconds() const
+double NewProjectAudioProcessor::getTailLengthSeconds() const
 {
     return 0.0;
 }
 
-int AmbiEncoderAudioProcessor::getNumPrograms()
+int NewProjectAudioProcessor::getNumPrograms()
 {
     return 1;   // NB: some hosts don't cope very well if you tell them there are 0 programs,
                 // so this should be at least 1, even if you're not really implementing programs.
 }
 
-int AmbiEncoderAudioProcessor::getCurrentProgram()
+int NewProjectAudioProcessor::getCurrentProgram()
 {
     return 0;
 }
 
-void AmbiEncoderAudioProcessor::setCurrentProgram (int index)
+void NewProjectAudioProcessor::setCurrentProgram (int index)
 {
 }
 
-const String AmbiEncoderAudioProcessor::getProgramName (int index)
+const String NewProjectAudioProcessor::getProgramName (int index)
 {
     return String();
 }
 
-void AmbiEncoderAudioProcessor::changeProgramName (int index, const String& newName)
+void NewProjectAudioProcessor::changeProgramName (int index, const String& newName)
 {
 }
 
 //==============================================================================
-void AmbiEncoderAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
+void NewProjectAudioProcessor::prepareToPlay (double sampleRate, int samplesPerBlock)
 {
     // Use this method as the place to do any pre-playback
     // initialisation that you need..
 }
 
-void AmbiEncoderAudioProcessor::releaseResources()
+void NewProjectAudioProcessor::releaseResources()
 {
     // When playback stops, you can use this as an opportunity to free up any
     // spare memory, etc.
 }
 
 #ifndef JucePlugin_PreferredChannelConfigurations
-bool AmbiEncoderAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
+bool NewProjectAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
   #if JucePlugin_IsMidiEffect
     ignoreUnused (layouts);
@@ -107,7 +107,7 @@ bool AmbiEncoderAudioProcessor::isBusesLayoutSupported (const BusesLayout& layou
     // This is the place where you check if the layout is supported.
     // In this template code we only support mono or stereo.
     if (layouts.getMainOutputChannelSet() != AudioChannelSet::mono()
-     && layouts.getMainOutputChannelSet() != AudioChannelSet::stereo())
+     && layouts.getMainOutputChannelSet() != AudioChannelSet::ambisonic())
         return false;
 
     // This checks if the input layout matches the output layout
@@ -121,7 +121,7 @@ bool AmbiEncoderAudioProcessor::isBusesLayoutSupported (const BusesLayout& layou
 }
 #endif
 
-void AmbiEncoderAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
+void NewProjectAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuffer& midiMessages)
 {
     const int totalNumInputChannels  = getTotalNumInputChannels();
     const int totalNumOutputChannels = getTotalNumOutputChannels();
@@ -146,25 +146,25 @@ void AmbiEncoderAudioProcessor::processBlock (AudioSampleBuffer& buffer, MidiBuf
 }
 
 //==============================================================================
-bool AmbiEncoderAudioProcessor::hasEditor() const
+bool NewProjectAudioProcessor::hasEditor() const
 {
     return true; // (change this to false if you choose to not supply an editor)
 }
 
-AudioProcessorEditor* AmbiEncoderAudioProcessor::createEditor()
+AudioProcessorEditor* NewProjectAudioProcessor::createEditor()
 {
-    return new AmbiEncoderAudioProcessorEditor (*this);
+    return new NewProjectAudioProcessorEditor (*this);
 }
 
 //==============================================================================
-void AmbiEncoderAudioProcessor::getStateInformation (MemoryBlock& destData)
+void NewProjectAudioProcessor::getStateInformation (MemoryBlock& destData)
 {
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
 }
 
-void AmbiEncoderAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
+void NewProjectAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
@@ -174,5 +174,5 @@ void AmbiEncoderAudioProcessor::setStateInformation (const void* data, int sizeI
 // This creates new instances of the plugin..
 AudioProcessor* JUCE_CALLTYPE createPluginFilter()
 {
-    return new AmbiEncoderAudioProcessor();
+    return new NewProjectAudioProcessor();
 }

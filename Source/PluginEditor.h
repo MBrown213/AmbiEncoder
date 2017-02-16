@@ -35,13 +35,13 @@
     Describe your class and how it works here!
                                                                     //[/Comments]
 */
-class AmbiEncoderAudioProcessorEditor  : public AudioProcessorEditor,
+class NewProjectAudioProcessorEditor  : public AudioProcessorEditor,
                                            public Timer
 {
 public:
     //==============================================================================
-    AmbiEncoderAudioProcessorEditor (AmbiEncoderAudioProcessor& p);
-    ~AmbiEncoderAudioProcessorEditor();
+    NewProjectAudioProcessorEditor (NewProjectAudioProcessor& p);
+    ~NewProjectAudioProcessorEditor();
 
     //==============================================================================
     //[UserMethods]     -- You can add your own custom methods in this section.
@@ -55,14 +55,14 @@ public:
 
 private:
     //[UserVariables]   -- You can add your own custom variables in this section.
-    AmbiEncoderAudioProcessor& processor;
+    NewProjectAudioProcessor& processor;
     //[/UserVariables]
 
     //==============================================================================
 
 
     //==============================================================================
-    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AmbiEncoderAudioProcessorEditor)
+    JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (NewProjectAudioProcessorEditor)
 };
 
 //[EndFile] You can add extra defines here...
